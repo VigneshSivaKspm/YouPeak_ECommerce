@@ -1,0 +1,10 @@
+{
+  "description": "Manage product listings, track sales, and monitor orders efficiently with a streamlined seller panel designed for online vendors.",
+  "robots": {
+    "index": false
+  },
+  "accessibility": {
+    "addBypassLinks": false,
+    "ignoreReducedMotion": false
+  }
+}

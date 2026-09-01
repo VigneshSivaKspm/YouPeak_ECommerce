@@ -1,0 +1,10 @@
+{
+  "description": "Streamline driver management with an intuitive panel that allows fleet operators to monitor performance, track routes, and optimize logistics efficiently.",
+  "robots": {
+    "index": false
+  },
+  "accessibility": {
+    "addBypassLinks": false,
+    "ignoreReducedMotion": false
+  }
+}

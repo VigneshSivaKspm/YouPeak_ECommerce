@@ -1,0 +1,168 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
+@import 'tailwindcss';
+
+html, body, #root {
+  height: 100%;
+}
+
+:root {
+  --gm-green: #16A34A;
+  --gm-green-deep: #0B6B35;
+  --gm-green-light: #EAF7EF;
+  --gm-green-mid: #D1FAE5;
+  --gm-sidebar: #102A33;
+  --gm-sidebar-hover: #1A3D4A;
+  --gm-sidebar-active: #16A34A;
+  --gm-bg: #F5F7F6;
+  --gm-card: #FFFFFF;
+  --gm-text: #10252E;
+  --gm-text-muted: #64748B;
+  --gm-border: #E6EBE8;
+  --gm-warning: #F59E0B;
+  --gm-error: #EF4444;
+  --gm-info: #3B82F6;
+  --gm-success: #16A34A;
+}
+
+body {
+  font-family: 'Inter', sans-serif;
+  background-color: var(--gm-bg);
+  color: var(--gm-text);
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar { width: 4px; height: 4px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: #CBD5E1; border-radius: 2px; }
+::-webkit-scrollbar-thumb:hover { background: #94A3B8; }
+
+/* Safe area support */
+.safe-bottom { padding-bottom: env(safe-area-inset-bottom, 0px); }
+.safe-top { padding-top: env(safe-area-inset-top, 0px); }
+
+/* Map placeholder */
+.map-placeholder {
+  background: linear-gradient(135deg, #e8f5e9 0%, #c8e6c9 30%, #a5d6a7 60%, #e8f5e9 100%);
+  position: relative;
+  overflow: hidden;
+}
+
+.map-placeholder::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(22,163,74,0.08) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(22,163,74,0.08) 1px, transparent 1px);
+  background-size: 40px 40px;
+}
+
+/* Route line animation */
+@keyframes routePulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.6; }
+}
+
+.route-line { animation: routePulse 2s ease-in-out infinite; }
+
+/* Bottom sheet */
+.bottom-sheet-overlay {
+  position: fixed; inset: 0; background: rgba(0,0,0,0.5);
+  z-index: 50; display: flex; align-items: flex-end;
+}
+
+.bottom-sheet-content {
+  background: white;
+  border-radius: 20px 20px 0 0;
+  width: 100%;
+  max-height: 90vh;
+  overflow-y: auto;
+  padding-bottom: env(safe-area-inset-bottom, 0px);
+}
+
+/* OTP input */
+.otp-input {
+  width: 52px;
+  height: 60px;
+  text-align: center;
+  font-size: 24px;
+  font-weight: 600;
+  border: 2px solid var(--gm-border);
+  border-radius: 12px;
+  outline: none;
+  transition: border-color 0.2s;
+}
+
+.otp-input:focus {
+  border-color: var(--gm-green);
+  box-shadow: 0 0 0 3px rgba(22,163,74,0.15);
+}
+
+/* Status badge colors */
+.badge-active { background: #DCFCE7; color: #15803D; }
+.badge-pending { background: #FEF9C3; color: #B45309; }
+.badge-completed { background: #DBEAFE; color: #1D4ED8; }
+.badge-cancelled { background: #FEE2E2; color: #DC2626; }
+.badge-failed { background: #FEE2E2; color: #DC2626; }
+.badge-verified { background: #DCFCE7; color: #15803D; }
+.badge-rejected { background: #FEE2E2; color: #DC2626; }
+.badge-expiring { background: #FEF3C7; color: #D97706; }
+.badge-online { background: #DCFCE7; color: #15803D; }
+.badge-offline { background: #F1F5F9; color: #64748B; }
+
+/* Delivery timeline */
+.timeline-done { color: var(--gm-green); }
+.timeline-current { color: var(--gm-green); font-weight: 600; }
+.timeline-upcoming { color: var(--gm-text-muted); }
+
+/* Skeleton loading */
+@keyframes shimmer {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+
+.skeleton {
+  background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+  background-size: 200% 100%;
+  animation: shimmer 1.5s infinite;
+  border-radius: 6px;
+}
+
+/* Performance ring */
+.perf-ring {
+  transform: rotate(-90deg);
+  transform-origin: 50% 50%;
+}
+
+/* Transitions */
+.page-enter {
+  animation: fadeSlideIn 0.2s ease-out;
+}
+
+@keyframes fadeSlideIn {
+  from { opacity: 0; transform: translateY(8px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Mobile bottom nav safe area */
+.mobile-bottom-nav {
+  padding-bottom: max(12px, env(safe-area-inset-bottom));
+}
+
+/* New delivery request countdown */
+@keyframes countdownPulse {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(239,68,68,0.4); }
+  50% { box-shadow: 0 0 0 8px rgba(239,68,68,0); }
+}
+
+.countdown-urgent { animation: countdownPulse 1s ease-in-out infinite; }
+
+/* Focus states */
+button:focus-visible, a:focus-visible, input:focus-visible {
+  outline: 2px solid var(--gm-green);
+  outline-offset: 2px;
+}
+
+/* Sidebar collapsed transition */
+.sidebar-transition { transition: width 0.25s ease; }
